@@ -3,7 +3,7 @@ import urllib.request
 from time import sleep
 import random
 
-myurl = "Thingspeak URL"
+myurl = "https://api.thingspeak.com/update?api_key=5NKLBPLHTEJC42RI"
 
 while True:
     speed = random.uniform(0 ,3)
@@ -17,7 +17,5 @@ while True:
         governor += 1
     if temperature > 82:
         emergency = 1
-    urllib.request.urlopen(myurl + "fields")
-
-
-#In this way we sent the data to the Thingspeak IoT platform.
+    urllib.request.urlopen(myurl + "&field1=" + str(temperature) + "&field2=" + str(level) + "&field3=" + str(speed) + "&field4=" + str(governor) + "&field5=" + str(voltage) + "&field6=" + str(emergency))
+    print("Uploaded")
